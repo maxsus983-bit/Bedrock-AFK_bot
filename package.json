@@ -1,6 +1,6 @@
 {
   "name": "bedrock-afk-bot",
-  "version": "1.0.0",
+  "version": "26.33.2",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
