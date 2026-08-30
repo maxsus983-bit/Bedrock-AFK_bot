@@ -1,0 +1,26 @@
+name: Run Bedrock AFK Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repozitoriyani yuklash
+        uses: actions/checkout@v4
+
+      - name: Node.js o'rnatish
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Kutubxonalarni o'rnatish
+        run: npm install
+
+      - name: Botni ishga tushirish
+        run: node bot.js
+        
