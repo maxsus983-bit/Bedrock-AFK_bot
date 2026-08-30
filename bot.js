@@ -5,12 +5,11 @@ function startBot() {
   console.log('🚀 Bedrock Bot serverga ulanmoqda...');
 
   const client = bedrock.createClient({
-    host: config.serverHost,
-    port: Number(config.serverPort),
-    username: config.botUsername || 'AFK_Bot',
+    host: config.serverHost.trim(),
+    port: parseInt(config.serverPort, 10),
+    username: config.botUsername || 'AFK_Bedrock_Bot',
     offline: true,
-    skipPing: true,        // Ping tekshiruvini o'chirish (Timeout oldini oladi)
-    connectTimeout: 60000  // Ulanish kutish vaqtini 60 soniyaga uzaytirish
+    skipPing: true
   });
 
   client.on('join', () => {
@@ -28,4 +27,4 @@ function startBot() {
 }
 
 startBot();
-            
+                  
