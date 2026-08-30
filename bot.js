@@ -9,15 +9,12 @@ function startBot() {
     port: Number(config.serverPort),
     username: config.botUsername,
     offline: true,
+    connectTimeout: 30000,
     skipPing: true
   });
 
   client.on('join', () => {
     console.log(`✅ ${config.botUsername} Bedrock serverga muvaffaqiyatli kirdi!`);
-  });
-
-  client.on('text', (packet) => {
-    // Server chat xabarlarini cheklovsiz qabul qilish
   });
 
   client.on('error', (err) => {
@@ -31,4 +28,3 @@ function startBot() {
 }
 
 startBot();
-      
