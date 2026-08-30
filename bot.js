@@ -9,20 +9,12 @@ function startBot() {
     port: Number(config.serverPort),
     username: config.botUsername || 'AFK_Bot',
     offline: true,
-    skipPing: false, // Serverdan avval ping olib, versiyani moslashtiradi
-    connectTimeout: 30000
+    skipPing: true,        // Ping tekshiruvini o'chirish (Timeout oldini oladi)
+    connectTimeout: 60000  // Ulanish kutish vaqtini 60 soniyaga uzaytirish
   });
 
   client.on('join', () => {
     console.log(`✅ ${config.botUsername} Bedrock serverga muvaffaqiyatli kirdi!`);
-  });
-
-  client.on('disconnect', (packet) => {
-    console.log('⚠️ Serverdan uzildi. Sababi:', packet.reason || JSON.stringify(packet));
-  });
-
-  client.on('kick', (packet) => {
-    console.log('⚠️ Kick qilindi. Sababi:', packet.message || JSON.stringify(packet));
   });
 
   client.on('error', (err) => {
@@ -30,8 +22,8 @@ function startBot() {
   });
 
   client.on('close', () => {
-    console.log('⛔️ Aloqa uzildi. 15 soniyadan keyin qayta ulanadi...');
-    setTimeout(startBot, 15000);
+    console.log('⛔️ Aloqa uzildi. 10 soniyadan keyin qayta ulanadi...');
+    setTimeout(startBot, 10000);
   });
 }
 
